@@ -1,13 +1,7 @@
 ---
-weight: 2
 title: 【NanoPi R2S旁路网关系列】1. 基础配置、Wireguard
 date: Tue Aug  8 13:10:22 CST 2023
 description: "NanoPi R2S 旁路网关"
-images:
-  - "https://img.linkzz.eu.org/main/images/2023/07/2e8160bd1dd204c75ec540bbce0449b3.png"
-resources:
-  - name: "featured-image"
-    src: "https://img.linkzz.eu.org/main/images/2023/07/2e8160bd1dd204c75ec540bbce0449b3.png"
 
 tags:
   - openwrt

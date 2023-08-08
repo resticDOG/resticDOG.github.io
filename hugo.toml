@@ -386,7 +386,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # Disqus comment config
       [params.page.comment.disqus]
         # LoveIt NEW | 0.1.1
-        enable = false
+        enable = true
         # Disqus shortname to use Disqus in posts
         shortname = ""
       # Gitalk comment config
