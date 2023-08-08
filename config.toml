@@ -358,7 +358,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     [params.page.share]
       enable = true
       Twitter = true
-      Facebook = true
+      Facebook = false
       Linkedin = false
       Whatsapp = false
       Pinterest = false
@@ -368,7 +368,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       VK = false
       Buffer = false
       Xing = false
-      Line = true
+      Line = false
       Instapaper = false
       Pocket = false
       Flipboard = false
