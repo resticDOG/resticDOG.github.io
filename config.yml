@@ -1,7 +1,7 @@
 theme: PaperMod
 baseURL: "https://linkzz.eu.org/"
 title: Linkzz's Blog
-paginate: 5
+paginate: 10
 
 enableRobotsTXT: true
 buildDrafts: false
@@ -35,7 +35,7 @@ params:
   ShowReadingTime: true
   ShowShareButtons: false
   ShowPostNavLinks: true
-  ShowBreadCrumbs: true
+  ShowBreadCrumbs: false
   ShowCodeCopyButtons: true
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
@@ -46,7 +46,7 @@ params:
   hidemeta: false
   hideSummary: false
   showtoc: true
-  tocopen: false
+  tocopen: true
 
   assets:
     # disableHLJS: true # to disable highlight.js
@@ -79,16 +79,16 @@ params:
 
   # home-info mode
   homeInfoParams:
-    Title: "Hi there \U0001F44B"
-    Content: Welcome to my blog
+    Title: "Hello \U0001F44B"
+    Content: 欢迎访问我的博客！本博客主要记录平时的一些折腾记录。
 
   socialIcons:
-    - name: twitter
-      url: "https://twitter.com/"
-    - name: stackoverflow
-      url: "https://stackoverflow.com"
+    - name: bilibili
+      url: "https://space.bilibili.com/918868"
     - name: github
-      url: "https://github.com/"
+      url: "https://github.com/resticDOG/"
+    - name: rss
+      url: "/index.xml"
 
   analytics:
     google:
