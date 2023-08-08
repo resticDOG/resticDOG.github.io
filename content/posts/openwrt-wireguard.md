@@ -2,7 +2,6 @@
 weight: 2
 title: 【NanoPi R2S旁路网关系列】1. 基础配置、Wireguard
 date: Tue Aug  8 13:10:22 CST 2023
-draft: false
 description: "NanoPi R2S 旁路网关"
 images:
   - "https://img.linkzz.eu.org/main/images/2023/07/2e8160bd1dd204c75ec540bbce0449b3.png"
@@ -442,7 +441,8 @@ windows 客户端点击连接：
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/08/14abc786923d364d48435f179e5733fd.png)
 
-对端连接成功，但是访问内网`192.168.5.0/24`网段显然是不行的，这是因为防火墙将来自 wireguard 的网络访问转发给 lan 接口，下面我们就开始配置防火墙。
+对端连接成功，但是访问内网`192.168.5.0/24`网段显然是不行的，这是因为防火墙将来自
+wireguard 的网络访问转发给 lan 接口，下面我们就开始配置防火墙。
 
 ### 防火墙配置
 
