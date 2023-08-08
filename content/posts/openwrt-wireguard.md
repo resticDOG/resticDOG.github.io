@@ -1,6 +1,6 @@
 ---
 title: 【NanoPi R2S旁路网关系列】1. 基础配置、Wireguard
-date: Tue Aug  8 13:10:22 CST 2023
+date: Tue Aug 7 13:10:22 CST 2023
 description: "NanoPi R2S 旁路网关"
 
 tags:
