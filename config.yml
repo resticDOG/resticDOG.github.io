@@ -24,10 +24,10 @@ params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: Linkzz's Blog
   description: "博客"
-  keywords: [Blog, Portfolio, PaperMod]
+  keywords: [Blog, Portfolio, PaperMod, 博客]
   author: Linkzz
   # author: ["Me", "You"] # multiple authors
-  images: ["<link or path of image for opengraph, twitter-cards>"]
+  images: ["/logo.png"]
   DateFormat: "2006-01-02"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
@@ -51,11 +51,11 @@ params:
   assets:
     # disableHLJS: true # to disable highlight.js
     # disableFingerprinting: true
-    favicon: "<link / abs url>"
-    favicon16x16: "<link / abs url>"
-    favicon32x32: "<link / abs url>"
-    apple_touch_icon: "<link / abs url>"
-    safari_pinned_tab: "<link / abs url>"
+    favicon: "logo.png"
+    favicon16x16: "logo.png"
+    favicon32x32: "logo.png"
+    apple_touch_icon: "logo.png"
+    safari_pinned_tab: "logo.png"
 
   # label:
   #   text: "Home"
@@ -65,22 +65,22 @@ params:
   # profile-mode
   profileMode:
     enabled: false # needs to be explicitly set
-    title: ExampleSite
-    subtitle: "This is subtitle"
-    imageUrl: "<img location>"
+    title: Linkzz's Blog
+    subtitle: ""
+    imageUrl: "logo.png"
     imageWidth: 120
     imageHeight: 120
-    imageTitle: my image
+    imageTitle: linkzz
     buttons:
       - name: Posts
-        url: posts
+        url: archives
       - name: Tags
         url: tags
 
   # home-info mode
   homeInfoParams:
     Title: "Hello \U0001F44B"
-    Content: 欢迎访问我的博客！本博客主要记录平时的一些折腾记录。
+    Content: 欢迎访问我的博客！生命不息，折腾不止，本博客主要记录平时的一些折腾记录。
 
   socialIcons:
     - name: bilibili
