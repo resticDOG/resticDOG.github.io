@@ -1,5 +1,4 @@
 ---
-weight: 2
 title: 使用Oracle对象存储作为博客图床（一）
 date: Tue Jul 11 16:20:02 CST 2023
 draft: false

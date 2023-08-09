@@ -1,6 +1,6 @@
 theme: PaperMod
 baseURL: "https://linkzz.eu.org/"
-title: Linkzz's Blog
+title: "Linkzz's Blog"
 paginate: 10
 
 enableRobotsTXT: true
@@ -27,7 +27,7 @@ params:
   keywords: [Blog, Portfolio, PaperMod, 博客]
   author: Linkzz
   # author: ["Me", "You"] # multiple authors
-  images: ["/logo.png"]
+  images: ["logo.png"]
   DateFormat: "2006-01-02"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
@@ -57,10 +57,10 @@ params:
     apple_touch_icon: "logo.png"
     safari_pinned_tab: "logo.png"
 
-  # label:
-  #   text: "Home"
-  #   icon: /apple-touch-icon.png
-  #   iconHeight: 35
+  label:
+    text: "Linkzz"
+    icon: /logo.png
+    iconHeight: 35
 
   # profile-mode
   profileMode:
