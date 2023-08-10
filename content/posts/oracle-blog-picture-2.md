@@ -120,6 +120,10 @@ cargo install gifski
 gifski -o output.gif frame*.png
 ```
 
+下面是演示：
+
+![output.gif](https://img.linkzz.eu.org/main/images/2023/08/6e87ec9e77084b02f00452727c9afd40.gif)
+
 这样就可以将你的 gif 上传到图床，通过自己的域名愉快的访问啦！
 
 ## 结语

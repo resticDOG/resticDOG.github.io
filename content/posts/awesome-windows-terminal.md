@@ -2,53 +2,70 @@
 title: 让Powershell更好用, Windows下目前最好用的终端工具-Windows Terminal折腾记
 date: 2021-06-29
 tags:
-- window terminal
-- 主题
-- 终端
-categories: 
-- tools
+  - window terminal
+  - 主题
+  - 终端
+categories:
+  - tools
 ---
 
-## 装X
+## 装 X
 
 熟话说：“~~漂亮~~（ZB）是第一生产力”，既然都是黑框框，你希望是这样的黑框框：
-![dos](https://i.loli.net/2021/07/01/Axas2bnNV6DJLvQ.png)
-还是这样的：
-![git-bash](https://i.loli.net/2021/07/01/EnDZ95XfQLuhUW2.png)
-又或者是这样的：
-![powershell](https://i.loli.net/2021/07/01/HIzt8jAevWsrxSq.png)
-不！
-这并不是我想要的，每天要面对的黑框框。除非我审美有问题， 要不然谁不喜欢下面这个：
-![windows-terminal](https://i.loli.net/2021/07/01/7C5BgHtISyKbjiz.png)
 
-## 如何装X
+![Axas2bnNV6DJLvQ.png](https://img.linkzz.eu.org/main/images/2023/08/d74740637b6c4ec89c473e4b2081161e.png)
+
+还是这样的：
+
+![EnDZ95XfQLuhUW2.png](https://img.linkzz.eu.org/main/images/2023/08/79f19ee09b82f04fa806e0479ba36e01.png)
+
+又或者是这样的：
+
+![HIzt8jAevWsrxSq.png](https://img.linkzz.eu.org/main/images/2023/08/bd04dd192addebb38e622a09f28201cd.png)
+
+不！ 这并不是我想要的，每天要面对的黑框框。除非审美有问题，
+要不然谁不喜欢下面这个：
+
+![7C5BgHtISyKbjiz.png](https://img.linkzz.eu.org/main/images/2023/08/c46cc9e6222af7625a6a276b9411d747.png)
+
+## 如何装 X
 
 到这里可能有些不明所以的小伙伴就要问了：“所以你这说的都是啥，没明白你装在哪里？”
 
 ### Windows Terminal
 
-我们都知道，全球最大装机量的操作系统是Windows，然而这样一个系统却有一个又丑有难用的终端-命令提示符，这使得很多开发者退而选择linux发行版进行开发，当然他们选择linux肯定还有其他原因，微软估计自己人都在吐槽自己的开发工具有多难用，所以陆续开发了linux子系统、Windows Terminal等开发者友好的工具，这才使得我在Windows环境也能有不错的开发体验。在一众使用cmd、powershell、git-bash原生终端的小伙伴中成为焦点。
+我们都知道，全球最大装机量的操作系统是
+Windows，然而这样一个系统却有一个又丑有难用的终端-命令提示符，这使得很多开发者退而选择
+linux 发行版进行开发，当然他们选择 linux
+肯定还有其他原因，微软估计自己人都在吐槽自己的开发工具有多难用，所以陆续开发了
+linux 子系统、Windows Terminal 等开发者友好的工具，这才使得我在 Windows
+环境也能有不错的开发体验。在一众使用 cmd、powershell、git-bash
+原生终端的小伙伴中成为焦点。
 
-说了那么多废话，下面我们还是从实践中来探索一下Windows Terminal吧。
+说了那么多废话，下面我们还是从实践中来探索一下 Windows Terminal 吧。
 
 #### 安装
 
-打开Microsoft Store搜索Windows Terminal安装即可。
-![microsoft-windows-terminal](https://i.loli.net/2021/07/01/1Uat5BJD6mNuCoH.png)
+打开 Microsoft Store 搜索 Windows Terminal 安装即可。
+
+![1Uat5BJD6mNuCoH.png](https://img.linkzz.eu.org/main/images/2023/08/302813bf5018525af27b211e2652c763.png)
 
 #### 配置主题
 
-最新版的Windows Terminal具有GUI配置界面，你可以在设置选项卡进行GUI的配置，如果不喜欢GUI界面配置，你还可以使用JSON配置的方式，点击打开JSON文件即可。
+最新版的 Windows Terminal 具有 GUI 配置界面，你可以在设置选项卡进行 GUI
+的配置，如果不喜欢 GUI 界面配置，你还可以使用 JSON 配置的方式，点击打开 JSON
+文件即可。
 
-打开[windowsterminalthemes](https://windowsterminalthemes.dev/)，选择一个你喜欢的主题， 然后复制到JSON文件schemes数组中， 如：
+打开[windowsterminalthemes](https://windowsterminalthemes.dev/)，选择一个你喜欢的主题，
+然后复制到 JSON 文件 schemes 数组中， 如：
 
 ```JSON
 {
   ...
-  "profiles": 
+  "profiles":
     {
       "defaults": {},
-      "list": 
+      "list":
       [
           {
               "acrylicOpacity": 0.5,        // 透明度
@@ -89,7 +106,7 @@ categories:
           }
         ]
   },
-  "schemes": 
+  "schemes":
     [
         {
             "background": "#0C0C0C",
@@ -164,39 +181,47 @@ categories:
 }
 ```
 
-#### 安装Oh-My-Posh
+#### 安装 Oh-My-Posh
 
-常用linux的人应该对Oh-My-Zsh不陌生，Oh-My-Zsh加上众多的plugin，使终端使用的舒适度提升了很多，[Oh-My-Posh](https://ohmyposh.dev/)即是对powershell做prompt美化的一个引擎。
+常用 linux 的人应该对 Oh-My-Zsh 不陌生，Oh-My-Zsh 加上众多的
+plugin，使终端使用的舒适度提升了很多，[Oh-My-Posh](https://ohmyposh.dev/)即是对
+powershell 做 prompt 美化的一个引擎。
 
-管理员身份打开powershell, 执行：
+管理员身份打开 powershell, 执行：
 
 ```powershell
 Install-Module oh-my-posh -Scope CurrentUser
 ```
 
-若提示不允许安装是因为Windows的脚本执行策略阻止的，需要修改策略，同样管理员运行：
+若提示不允许安装是因为 Windows
+的脚本执行策略阻止的，需要修改策略，同样管理员运行：
 
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm
 ```
 
-安装好之后执`Import-Module oh-my-posh`导入模块，因为导入只在会话范围内有效，为了保证每次开启终端之前都导入模块，在powershell启动脚本中加入代码。使用编辑器打开$profile，我用的编辑器是vscode。
+安装好之后执`Import-Module oh-my-posh`导入模块，因为导入只在会话范围内有效，为了保证每次开启终端之前都导入模块，在
+powershell 启动脚本中加入代码。使用编辑器打开$profile，我用的编辑器是 vscode。
 
 ```powershell
 code $profile  # 用vscode打开powershell配置文件，没有这个文件会自己创建
 ```
 
-`$profile`类似`.bashrc`，每次开启一个会话都会执行该脚本，适合将各种alias放到其中，文件中添加
+`$profile`类似`.bashrc`，每次开启一个会话都会执行该脚本，适合将各种 alias
+放到其中，文件中添加
 
 ```powershell
 Import-Module oh-my-posh
 ```
 
-#### 选择一个合适的prompt主题
+#### 选择一个合适的 prompt 主题
 
-Oh-My-Posh内置了多个主题，其颜值和实用性我觉得够用了，使用`Get-PoshThemes`可预览所有主题。
-![poshthemes](https://i.loli.net/2021/07/01/4AK6Jey9VHMiYq1.png)
-使用`Set-PoshPrompt -Theme $THEME`设置主题，选好主题之后也将设置主题的脚本写到profile中：
+Oh-My-Posh
+内置了多个主题，其颜值和实用性我觉得够用了，使用`Get-PoshThemes`可预览所有主题。
+![4AK6Jey9VHMiYq1.png](https://img.linkzz.eu.org/main/images/2023/08/55f6ddd3f7ed717ef9af8cbaf3fd232c.png)
+
+使用`Set-PoshPrompt -Theme $THEME`设置主题，选好主题之后也将设置主题的脚本写到
+profile 中：
 
 ```powershell
 Import-Module oh-my-posh
@@ -206,28 +231,37 @@ Set-PoshPrompt -Theme ys  # 我使用ys主题
 #### 选择一个等宽字体
 
 也许你的主题会有些字符显示不出，比如这样的：
-![font](https://i.loli.net/2021/07/01/hwkPcZmKvf7Ny9H.png)
-这是因为字体不支持图标引起的，需要Nerd字体方可解决这个问题。具体可参考这个项目: [Nerd Font](https://github.com/ryanoasis/nerd-fonts)
+
+![hwkPcZmKvf7Ny9H.png](https://img.linkzz.eu.org/main/images/2023/08/59b2c1bd6146c4e5a8a962d7d0c43661.png)
+
+这是因为字体不支持图标引起的，需要 Nerd
+字体方可解决这个问题。具体可参考这个项目:
+[Nerd Font](https://github.com/ryanoasis/nerd-fonts)
 我是用的是[JetbrainsMono Nerd Patcher](https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf)的字体。安装字体之后可在设置界面选择该字体：
-![setup-font](https://i.loli.net/2021/07/01/Oy3frwQ5lmtHGVI.png)
+
+![Oy3frwQ5lmtHGVI.png](https://img.linkzz.eu.org/main/images/2023/08/6aecea3b8fb073c02f6c35ed43e5b786.png)
 
 #### 其他一些设置
 
-至于添加背景图，设置透明度等这些设置相信就不用我多说什么了，相信你也能配出一个高颜值的终端， 最后贴出我的JSON设置和profile供大家参考。
+至于添加背景图，设置透明度等这些设置相信就不用我多说什么了，相信你也能配出一个高颜值的终端，
+最后贴出我的 JSON 设置和 profile 供大家参考。
 最后说一下一些主题的颜色配置在命令的参数如：`git --version`中`--version`可能会很难辨认，主要因为该颜色和背景色的对比度太低。
-![param-color](https://i.loli.net/2021/07/01/oKnaA7dMel2kJuO.png)
-这个时候换一个主题当然是个办法，但如果你真很喜欢这个主题也不是没有解决方法，打开设置-配色方案，找到对比度很低的颜色，修改为相对背景色高一点的颜色即可，找不到颜色，相似的试一下总会使出来的。
-![theme-color-high](https://i.loli.net/2021/07/01/nIQTlyp4tAuWDwh.png)
 
-JSON配置（省略了一些配置）：
+![oKnaA7dMel2kJuO.png](https://img.linkzz.eu.org/main/images/2023/08/387941d38aa7adad63924f1e1470e92f.png)
+
+这个时候换一个主题当然是个办法，但如果你真很喜欢这个主题也不是没有解决方法，打开设置-配色方案，找到对比度很低的颜色，修改为相对背景色高一点的颜色即可，找不到颜色，相似的试一下总会使出来的。
+
+![nIQTlyp4tAuWDwh.png](https://img.linkzz.eu.org/main/images/2023/08/05201ef4f180d0ebfedd9536a57a1e0c.png)
+
+JSON 配置（省略了一些配置）：
 
 ```JSON
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "actions":
     [
         {
-            "command": 
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -243,7 +277,7 @@ JSON配置（省略了一些配置）：
             "keys": "ctrl+shift+f"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -255,10 +289,10 @@ JSON配置（省略了一些配置）：
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-    "profiles": 
+    "profiles":
     {
         "defaults": {},
-        "list": 
+        "list":
         [
             {
                 "acrylicOpacity": 0.5,
@@ -299,7 +333,7 @@ JSON配置（省略了一些配置）：
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#121212",
@@ -344,4 +378,6 @@ Set-PoshPrompt -Theme ys
 . C:\Users\linkzz\ps-scripts\alais.ps1
 ```
 
-至此Windows Terminal美化就说完了，到这里你可以去给你的小伙伴们装X了，但这只算装X刚入门阶段， 要想更好的装X，想要更多好用的终端功能，下一章我们继续。
+至此 Windows Terminal 美化就说完了，到这里你可以去给你的小伙伴们装 X
+了，但这只算装 X 刚入门阶段， 要想更好的装
+X，想要更多好用的终端功能，下一章我们继续。
