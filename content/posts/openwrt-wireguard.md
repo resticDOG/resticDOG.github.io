@@ -16,7 +16,7 @@ toc:
   auto: true
 ---
 
-# 前言
+## 前言
 
 自己现在家中有一台自己组的 All in One 服务器，系统是 PVE，在上面跑了个虚拟机
 OpenWRT
@@ -26,7 +26,7 @@ OpenWRT
 PVE，这时要是家里领导在打王者掉线了就有的好受了，所以趁着 618（没错 618
 到现在才开始折腾）下手了一台 R2S，彻底杜绝家里领导找茬的机会。
 
-# 需求
+## 需求
 
 基本是目前虚拟机上 OpenWRT 功能的移植：
 
@@ -51,7 +51,7 @@ windows 激活
 
 如题，不做展开
 
-# R2S 系统安装
+## R2S 系统安装
 
 下面我们就一步步实现上面的需求，首先是系统的选用，依照官网介绍选择官方自己维护编译的
 OpenWRT 发行版，对与 Docker
@@ -157,7 +157,7 @@ config odhcpd 'odhcpd'
         option loglevel '4'
 ```
 
-执行命令检测互谅网访问能力
+执行命令检测互联网访问能力
 
 ```bash
 curl https://baidu.com
@@ -175,7 +175,7 @@ establish a secure connection to it. To learn more about this situation and
 how to fix it, please visit the web page mentioned above.
 ```
 
-网络是联通了互联网的，其他机器也能正常上网，查了一下是机器时间有问题：
+网络是连通了互联网的，其他机器也能正常上网，查了一下是机器时间有问题：
 
 ```bash
 root@FriendlyWrt:~# date
@@ -447,7 +447,7 @@ nat，转发来自`192.168.7.0/24`网段的流量到 lan
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/08/3ed316779a109677b36d2c22ab8e629b.png)
 
-# 小结
+## 小结
 
 本章我们实现了 openwrt 的第一个功能，外网访问内网即 VPN
 的功能，让我们可以不用担心各种端口转发暴露内网风险，实现方便安全的访问家庭内网的能力，接下来我们继续实现第二个需求，自定义内网域名。
