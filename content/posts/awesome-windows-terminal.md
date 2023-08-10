@@ -32,7 +32,7 @@ categories:
 
 到这里可能有些不明所以的小伙伴就要问了：“所以你这说的都是啥，没明白你装在哪里？”
 
-### Windows Terminal
+## Windows Terminal
 
 我们都知道，全球最大装机量的操作系统是
 Windows，然而这样一个系统却有一个又丑有难用的终端-命令提示符，这使得很多开发者退而选择
@@ -44,13 +44,13 @@ linux 子系统、Windows Terminal 等开发者友好的工具，这才使得我
 
 说了那么多废话，下面我们还是从实践中来探索一下 Windows Terminal 吧。
 
-#### 安装
+### 安装
 
 打开 Microsoft Store 搜索 Windows Terminal 安装即可。
 
 ![1Uat5BJD6mNuCoH.png](https://img.linkzz.eu.org/main/images/2023/08/302813bf5018525af27b211e2652c763.png)
 
-#### 配置主题
+### 配置主题
 
 最新版的 Windows Terminal 具有 GUI 配置界面，你可以在设置选项卡进行 GUI
 的配置，如果不喜欢 GUI 界面配置，你还可以使用 JSON 配置的方式，点击打开 JSON
@@ -181,7 +181,7 @@ linux 子系统、Windows Terminal 等开发者友好的工具，这才使得我
 }
 ```
 
-#### 安装 Oh-My-Posh
+### 安装 Oh-My-Posh
 
 常用 linux 的人应该对 Oh-My-Zsh 不陌生，Oh-My-Zsh 加上众多的
 plugin，使终端使用的舒适度提升了很多，[Oh-My-Posh](https://ohmyposh.dev/)即是对
@@ -214,7 +214,7 @@ code $profile  # 用vscode打开powershell配置文件，没有这个文件会�
 Import-Module oh-my-posh
 ```
 
-#### 选择一个合适的 prompt 主题
+### 选择一个合适的 prompt 主题
 
 Oh-My-Posh
 内置了多个主题，其颜值和实用性我觉得够用了，使用`Get-PoshThemes`可预览所有主题。
@@ -228,7 +228,7 @@ Import-Module oh-my-posh
 Set-PoshPrompt -Theme ys  # 我使用ys主题
 ```
 
-#### 选择一个等宽字体
+### 选择一个等宽字体
 
 也许你的主题会有些字符显示不出，比如这样的：
 
@@ -241,7 +241,7 @@ Set-PoshPrompt -Theme ys  # 我使用ys主题
 
 ![Oy3frwQ5lmtHGVI.png](https://img.linkzz.eu.org/main/images/2023/08/6aecea3b8fb073c02f6c35ed43e5b786.png)
 
-#### 其他一些设置
+### 其他一些设置
 
 至于添加背景图，设置透明度等这些设置相信就不用我多说什么了，相信你也能配出一个高颜值的终端，
 最后贴出我的 JSON 设置和 profile 供大家参考。
@@ -377,6 +377,8 @@ Set-PoshPrompt -Theme ys
 # alais scripts
 . C:\Users\linkzz\ps-scripts\alais.ps1
 ```
+
+## 结语
 
 至此 Windows Terminal 美化就说完了，到这里你可以去给你的小伙伴们装 X
 了，但这只算装 X 刚入门阶段， 要想更好的装
