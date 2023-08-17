@@ -132,6 +132,10 @@ menu:
       name: 搜索
       url: /search/
       weight: 30
+    - identifier: acg
+      name: ACG
+      url: /bangumi/
+      weight: 30
     - identifier: links
       name: 友站
       url: https://huangjing.me

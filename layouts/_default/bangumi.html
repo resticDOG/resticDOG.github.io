@@ -1,0 +1,119 @@
+{{- define "main" }}
+
+<header class="page-header">
+  <h1>{{- (printf "%s&nbsp;" .Title ) | htmlUnescape -}}</h1>
+  {{- if .Description }}
+  <div class="post-description">{{ .Description }}</div>
+  {{- end }} {{- if not (.Param "hideMeta") }}
+  <div class="post-meta">{{- partial "translation_list.html" . -}}</div>
+  {{- end }}
+</header>
+
+{{- if .Content }}
+<div class="post-content">
+  {{- if not (.Param "disableAnchoredHeadings") }} {{- partial
+  "anchored_headings.html" .Content -}} {{- else }}{{ .Content }}{{ end }}
+  <div id="bangumi-list"></div>
+</div>
+<style>
+  #bangumi-list ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  #bangumi-list li {
+    margin: 0 0.5rem 1rem;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  #bangumi-list li a {
+    box-shadow: none;
+  }
+  #bangumi-list li img {
+    width: 10rem;
+    height: 14rem;
+    max-width: 12rem;
+    margin: 0 1rem 0 0;
+  }
+  #bangumi-list li .subject-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1rem;
+    color: #666;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: calc(100% - 10rem);
+  }
+  #bangumi-list li h3 {
+    margin: 0.2rem;
+    font-size: 1.2rem;
+  }
+  #bangumi-list li .subject-desc .summary {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    color: #999;
+  }
+  #bangumi-list li .subject-desc .comment {
+    font-style: italic;
+    background-color: #f7f4f4;
+    border: 1px solid #ddd;
+    padding: 1px 2px;
+    border-radius: 0.2rem;
+  }
+</style>
+<script>
+  fetch("https://api.bgm.tv/v0/users/685827/collections")
+    .then((response) => response.json())
+    .then(({ data }) => {
+      appendBangumiList(data);
+    });
+
+  function appendBangumiList(data) {
+    const bangumiList = document.querySelector("#bangumi-list");
+    const animeList = document.createElement("ul");
+    const gameList = document.createElement("ul");
+    data.forEach((item) => {
+      const subject = item.subject;
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      const img = document.createElement("img");
+      const title = document.createElement("h3");
+      const subjectDesc = document.createElement("div");
+      subjectDesc.classList.add("subject-desc");
+      const desc = document.createElement("span");
+      desc.classList.add("summary");
+      const comment = document.createElement("div");
+      comment.classList.add("comment");
+      const rate = document.createElement("div");
+      rate.classList.add("rate");
+      a.href = `https://bgm.tv/subject/${subject["id"]}`;
+      img.src = subject.images.medium;
+      title.innerText = subject["name_cn"] || subject.name;
+      desc.innerText = subject["short_summary"].replace(/[\r\n]/g, "");
+      comment.innerText = item.comment ? `“ ${item.comment} ”` : "";
+      rate.innerText = `${item.rate}分`;
+      a.appendChild(img);
+      li.appendChild(a);
+      subjectDesc.appendChild(title);
+      subjectDesc.appendChild(desc);
+      if (comment.innerText) {
+        subjectDesc.appendChild(comment);
+      }
+      subjectDesc.appendChild(rate);
+      li.appendChild(subjectDesc);
+      if (item["subject_type"] === 2) {
+        animeList.appendChild(li);
+      } else {
+        gameList.appendChild(li);
+      }
+    });
+    bangumiList.appendChild(animeList);
+    bangumiList.appendChild(gameList);
+  }
+</script>
+{{- end }} {{- end }}{{/* end main */}}
