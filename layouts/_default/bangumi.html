@@ -9,13 +9,29 @@
   {{- end }}
 </header>
 
-{{- if .Content }}
+{{- if .Site.Params.bangumi.username }}
+<a
+  class="bangumi-user"
+  href="https://bgm.tv/user/{{.Site.Params.bangumi.username}}"
+  target="_blank"
+>
+  <img
+    src="https://bgm.tv/chart/img/{{.Site.Params.bangumi.username}}"
+    alt="chart_img"
+  />
+</a>
 <div class="post-content">
   {{- if not (.Param "disableAnchoredHeadings") }} {{- partial
   "anchored_headings.html" .Content -}} {{- else }}{{ .Content }}{{ end }}
   <div id="bangumi-list"></div>
 </div>
 <style>
+  .bangumi-user {
+    display: block;
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 20rem;
+  }
   #bangumi-list ul {
     margin: 0;
     padding: 0;
@@ -42,8 +58,8 @@
     flex-direction: column;
     justify-content: space-between;
     font-size: 1rem;
-    color: #666;
-    border: 1px solid #ddd;
+    color: var(--content);
+    border: 1px solid var(--border);
     border-radius: 0.5rem;
     padding: 0.5rem;
     width: calc(100% - 10rem);
@@ -56,18 +72,19 @@
     display: block;
     margin-bottom: 0.5rem;
     font-size: 0.8rem;
-    color: #999;
+    color: var(--secondary);
   }
   #bangumi-list li .subject-desc .comment {
     font-style: italic;
-    background-color: #f7f4f4;
-    border: 1px solid #ddd;
+    background-color: var(--border);
+    border: 1px solid var(--border);
     padding: 1px 2px;
     border-radius: 0.2rem;
   }
 </style>
 <script>
-  fetch("https://api.bgm.tv/v0/users/685827/collections")
+  const username = {{ .Site.Params.bangumi.username | jsonify }};
+  fetch(`https://api.bgm.tv/v0/users/${username}/collections`)
     .then((response) => response.json())
     .then(({ data }) => {
       appendBangumiList(data);
@@ -81,6 +98,7 @@
       const subject = item.subject;
       const li = document.createElement("li");
       const a = document.createElement("a");
+      a.target = "_blank";
       const img = document.createElement("img");
       const title = document.createElement("h3");
       const subjectDesc = document.createElement("div");
@@ -116,4 +134,5 @@
     bangumiList.appendChild(gameList);
   }
 </script>
-{{- end }} {{- end }}{{/* end main */}}
+{{- if (.Param "comments") }} {{- partial "comments.html" . }} {{- end }} {{-
+end }} {{- end }}{{/* end main */}}
