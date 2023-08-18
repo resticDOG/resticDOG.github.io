@@ -16,8 +16,8 @@
 ></script>
 <div>
   <script>
-    function changeGiscusTheme() {
-      const theme = document.body.classList.contains("dark") ? "light" : "dark";
+    function changeGiscusTheme(reversed) {
+      const theme = document.body.classList.contains("dark") ? "dark" : "light";
       function sendMessage(message) {
         const iframe = document.querySelector("iframe.giscus-frame");
         if (!iframe) return;
@@ -28,11 +28,15 @@
       }
       sendMessage({
         setConfig: {
-          theme: theme,
+          theme,
         },
       });
     }
-    document.addEventListener("DOMContentLoaded", changeGiscusTheme);
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(function () {
+        changeGiscusTheme();
+      }, 2000);
+    });
     const toggle = document.querySelector("#theme-toggle");
     if (toggle) {
       toggle.addEventListener("click", changeGiscusTheme);
