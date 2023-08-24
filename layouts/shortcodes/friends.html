@@ -1,0 +1,46 @@
+<!-- prettier-ignore -->
+{{ $friends := getJSON "static/friends.json" }}
+<style>
+  .friends-container {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--card-bg-color);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .friends-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    width: 12rem;
+    padding: 5px;
+    margin: 5px;
+    background-color: var(--border);
+    border-radius: 5%;
+  }
+  .friends-card .avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 1rem;
+    border-radius: 50%;
+  }
+  .friends-card a {
+    text-decoration: none;
+  }
+</style>
+<div class="friends-container">
+  {{ range $friends.friend}}
+  <div class="friends-card">
+    <img
+      loading="lazy"
+      class="avatar"
+      src="{{- if .src -}}{{- .src -}}{{- else -}}https://gravatar.loli.net/avatar/{{ .md5 -}}{{- end -}}"
+    />
+    <a target="_blank" href="{{ .url }}">{{ .name }}</a>
+  </div>
+  {{ end }}
+</div>

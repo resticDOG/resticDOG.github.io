@@ -139,9 +139,9 @@ menu:
       name: ACG
       url: /bangumi/
       weight: 30
-    - identifier: links
-      name: 友站
-      url: https://huangjing.me
+    - identifier: about
+      name: 关于我
+      url: /about/
       weight: 40
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true

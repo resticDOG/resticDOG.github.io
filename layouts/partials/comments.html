@@ -17,7 +17,10 @@
 <div>
   <script>
     function changeGiscusTheme(reversed) {
-      const theme = document.body.classList.contains("dark") ? "dark" : "light";
+      let theme = document.body.classList.contains("dark") ? "light" : "dark";
+      if (reversed) {
+        theme = theme === "light" ? "dark" : "light";
+      }
       function sendMessage(message) {
         const iframe = document.querySelector("iframe.giscus-frame");
         if (!iframe) return;
@@ -34,12 +37,14 @@
     }
     document.addEventListener("DOMContentLoaded", function () {
       setTimeout(function () {
-        changeGiscusTheme();
+        changeGiscusTheme(true);
       }, 2000);
     });
     const toggle = document.querySelector("#theme-toggle");
     if (toggle) {
-      toggle.addEventListener("click", changeGiscusTheme);
+      toggle.addEventListener("click", function () {
+        changeGiscusTheme();
+      });
     }
   </script>
 </div>
