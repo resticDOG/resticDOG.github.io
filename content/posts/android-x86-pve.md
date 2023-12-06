@@ -36,24 +36,28 @@ toc:
 
 现阶段能作为选择的有3种方案：
 
-- 1. ChromeOS首当其冲的就是基
-     于[Chromium OS](https://www.chromium.org/chromium-os/)的ChromeOS及其他发行
-     版如国内的[FydeOS](https://fydeos.io/)，这系统号称老电影福音，具有完整的桌
-     面环境并兼容Android应用，可惜对于显卡的兼容性不是很好，而虚拟机能使用3D加速
-     的显卡，除了显卡直通外还有一种就是最近一两年积极维护
+- 1. **ChromeOS**:
+
+     首当其冲的就是基于[Chromium OS](https://www.chromium.org/chromium-os/)的
+     ChromeOS及其他发行版如国内的[FydeOS](https://fydeos.io/)，这系统号称老电影
+     福音，具有完整的桌面环境并兼容Android应用，可惜对于显卡的兼容性不是很好，而
+     虚拟机能使用3D加速的显卡，除了显卡直通外还有一种就是最近一两年积极维护
      的[VirtualGL](https://wiki.archlinux.org/title/VirtualGL)，所以ChromeOS在
      VirtualGL下运行是否可行还得画个问号，后面再折腾。
 
-- 2. 容器化方案-Waydroid，Redroid第二种方案就是借助容器化cgroup，namespace等功能
-     的容器化方案，这种方案启动快速，可使用宿主机硬件资源，也能使用宿主机GPU 进
-     行 3D 加速, 但是对于Nvidia的显卡兼容性很差。运用pve创建一个lxc容器来运行
-     docker redroid容器也能运行，后续折腾一下这个方案。
+- 2. **容器化方案 -`Waydroid` or `Redroid`**:
 
-- 3. Android-x86 [Android-x86](https://www.android-x86.org/) 在AOSP的基础上增加
-     x86平台的支持，可通过native-bridge转义arm指令从而运行arm应用，同样称为老电
-     脑福音，GPU兼容性较好，兼
-     容[VirtualGL](https://wiki.archlinux.org/title/VirtualGL) ，今天我们就来在
-     pve中尝试一下这个系统有什么妙处。
+     第二种方案就是借助容器化`cgroups`，`namespace` 等内核技术的容器化方案，这种
+     方案启动快速，可使用宿主机硬件资源，也能使用宿主机GPU进行3D加速, 但是对于
+     Nvidia的显卡兼容性很差。运用pve创建一个lxc容器来运行docker redroid容器也能
+     运行，后续折腾一下这个方案。
+
+- 3. **Android-x86:**
+
+     [Android-x86](https://www.android-x86.org/) 在AOSP的基础上增加x86平台的支
+     持，可通过native-bridge转义arm指令从而运行arm应用，同样称为老电脑福音，GPU
+     兼容性较好，兼容[VirtualGL](https://wiki.archlinux.org/title/VirtualGL) ，
+     今天我们就来在pve中尝试一下这个系统有什么妙处。
 
 ## 2. 安装Android-x86
 
