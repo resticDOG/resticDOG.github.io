@@ -20,7 +20,7 @@ toc:
 
 ## 1. 前言
 
-我的一篇 [文章](posts/android-x86-pve/) 中有提到过云安卓手机的项目-redroid，该
+我的一篇 [文章](../android-x86-pve/) 中有提到过云安卓手机的项目-redroid，该
 [项目](https://github.com/remote-android/redroid-doc) 基于容器技术，构建一个安卓
 的运行时，同时通过Linux的内核模块，支持调用宿主机的硬件资源，同时其可运行于
 `x86` 架构之上，通过转译来运行仅支持 `arm` 架构的安卓应用，用来跑app测试可以一
