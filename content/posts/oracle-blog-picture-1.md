@@ -24,8 +24,7 @@ toc:
 
 ![oracle_photo_blog.gif](https://img.linkzz.eu.org/main/images/2023/06/6746b05d3db94d4f5e9dd174a0d73831.gif)
 
-作为一个专业白嫖党，只使用 Oracle 的 4 个免费鸡怎么能满足呢，拥有 20GB
-免费空间的对象存储当然也要利用起来，正好最近又重拾起了鸽了多年的博客，正好作为博客的图床。
+作为一个专业白嫖党，只使用 Oracle 的 4 个免费鸡怎么能满足呢，拥有 20GB 免费空间的对象存储当然也要利用起来，正好最近又重拾起了鸽了多年的博客，正好作为博客的图床。
 
 <!-- more -->
 
@@ -36,14 +35,11 @@ toc:
 
 ## Oracle Object Storage 存储桶准备
 
-1. 进入 Oracle Cloud
-   [对象存储](https://console.ap-chuncheon-1.oraclecloud.com/object-storage/buckets)管理界面，创建新的存储桶
+1. 进入 Oracle Cloud [对象存储](https://console.ap-chuncheon-1.oraclecloud.com/object-storage/buckets)管理界面，创建新的存储桶
 
    ![image.png](https://img.linkzz.eu.org/main/images/2023/07/2e8160bd1dd204c75ec540bbce0449b3.png)
 
-   默认配置即可，创建完之后编辑可见性，这里可以选择公开或者私有，
-   **公开**：所有文件允许读取
-   **私有**：可使用预先验证的请求实现部分文件公开（推荐这种方式）
+   默认配置即可，创建完之后编辑可见性，这里可以选择公开或者私有， **公开**：所有文件允许读取 **私有**：可使用预先验证的请求实现部分文件公开（推荐这种方式）
 
    ![image.png](https://img.linkzz.eu.org/main/images/2023/07/40096c4fdfbf90922518292d20237ac3.png)
 
@@ -51,8 +47,7 @@ toc:
 
    ![image.png](https://img.linkzz.eu.org/main/images/2023/07/09d4c0a3290c70273f698dc5d29fd99d.png)
 
-   选择具有前缀的对象，前缀填写`images`,下文配置 picgo
-   时需要匹配这个前缀，否则会有权限问题，访问类型默认只读即可，到期时间尽量一步到位多配几年。
+   选择具有前缀的对象，前缀填写`images`,下文配置 picgo时需要匹配这个前缀，否则会有权限问题，访问类型默认只读即可，到期时间尽量一步到位多配几年。
 
    ![image.png](https://img.linkzz.eu.org/main/images/2023/07/6f53d7d3c8cc4abc2c1ed8f3819f4b1b.png)
 
@@ -68,23 +63,19 @@ toc:
 
    ![image.png](https://img.linkzz.eu.org/main/images/2023/07/38a0255029419d9b1b66bc7e2b0ae25a.png)
 
-   需要替换为刚才创建的预见请求的 URL 前缀
-   `https://objectstorage.ap-chuncheon-1.oraclecloud.com/p/xxx/n/{namespace}/b/blog/o/images/2022-05-23.png`
+   需要替换为刚才创建的预见请求的 URL 前缀 `https://objectstorage.ap-chuncheon-1.oraclecloud.com/p/xxx/n/{namespace}/b/blog/o/images/2022-05-23.png`
 
-3. 存储桶 Endpoint 甲骨文的对象存储 endpoint
-   模式为`https://{namespace}.compat.objectstorage.{region}.oraclecloud.com/`
+3. 存储桶 Endpoint 甲骨文的对象存储 endpoint 模式为`https://{namespace}.compat.objectstorage.{region}.oraclecloud.com/`
 
 - namespace: 存储桶信息名称空间字段
 
   ![image.png](https://img.linkzz.eu.org/main/images/2023/07/87bc00ded688e7a6032829eb38465986.png)
 
-- region: 这个是你甲骨文账号的区域，通常在你的 Oci 的 console
-  地址里就有体现，如我的春川为`ap-chuncheon-1`
+- region: 这个是你甲骨文账号的区域，通常在你的 Oci 的 console 地址里就有体现，如我的春川为`ap-chuncheon-1`
 
   ![image.png](https://img.linkzz.eu.org/main/images/2023/07/e1ed2c4899256a527738e62af48deea8.png)
 
-4. 申请 Oracle 账户 Ak 和 Sk
-   右上角头像，进入“我的概要信息“，”客户密钥“选项”生成密钥“
+4. 申请 Oracle 账户 Ak 和 Sk右上角头像，进入“我的概要信息“，”客户密钥“选项”生成密钥“
 
    ![image.png](https://img.linkzz.eu.org/main/images/2023/07/a78dd370e5b5ccd75fdbfabe1d48be02.png)
 
@@ -101,9 +92,7 @@ toc:
 准备工作完成，下面开始配置图床工具。这里有两种选择：
 
 1. 具有 GUI 界面：[PicGo](https://github.com/Molunerfinn/PicGo)
-2. Cli 命令行操作：[PicGo-Core](https://github.com/PicGo/PicGo-Core)
-   上面两种看个人喜好，我比较习惯命令行，所以选择第二种，配置方面都是一样的，区别为是否提供了
-   GUI，
+2. Cli 命令行操作：[PicGo-Core](https://github.com/PicGo/PicGo-Core) 上面两种看个人喜好，我比较习惯命令行，所以选择第二种，配置方面都是一样的，区别为是否提供了GUI，
 
 ### 安装 Node 环境
 
@@ -127,20 +116,17 @@ yarn global add picgo
 picgo -h
 ```
 
-出现以下结果表明安装成功
-![image.png](https://img.linkzz.eu.org/main/images/2023/07/86ebb4100d6fccadc15da9dd4ac54b2f.png)
+出现以下结果表明安装成功 ![image.png](https://img.linkzz.eu.org/main/images/2023/07/86ebb4100d6fccadc15da9dd4ac54b2f.png)
 
 ### 添加 S3 插件
 
-s3 插件理论上支持所有兼容 S3API
-的对象存储，具体参看插件[主页](https://github.com/wayjam/picgo-plugin-s3)
+s3 插件理论上支持所有兼容 S3API 的对象存储，具体参看插件[主页](https://github.com/wayjam/picgo-plugin-s3)
 
 ```bash
 picgo add s3
 ```
 
-安装成功之后配置文件含有以下信息
-![image.png](https://img.linkzz.eu.org/main/images/2023/07/02cc67a290ac0bcfcdf73e54d98fb949.png)
+安装成功之后配置文件含有以下信息 ![image.png](https://img.linkzz.eu.org/main/images/2023/07/02cc67a290ac0bcfcdf73e54d98fb949.png)
 
 ### 配置 s3 插件
 
@@ -174,12 +160,10 @@ picgo add s3
 - sk: 上文申请的甲骨文账号`SecretAccessKey`
 - bucket: 桶名称，我的这里就是`blog`
 - region: 上文获取的`region`区域，我这里是`ap-chuncheon-1`
-- uploadPath 的占位符不需要修改，且注意前缀 images
-  一定要匹配上文`预先验证的请求`处的前缀
+- uploadPath 的占位符不需要修改，且注意前缀 images 一定要匹配上文`预先验证的请求`处的前缀
 - namespace: 上文获取的 namespace
 - urlPrefix: 这个字段为`预先验证的请求`处申请的 URL 前缀
-- disableBucketPrefixToURL: 这个字段必须为
-  true,否则上传链接自动添加桶前缀导致访问失败，具体可看这个[Issue](https://github.com/wayjam/picgo-plugin-s3/issues/30)
+- disableBucketPrefixToURL: 这个字段必须为true,否则上传链接自动添加桶前缀导致访问失败，具体可看这个[Issue](https://github.com/wayjam/picgo-plugin-s3/issues/30)
 
 ### 验证配置
 
@@ -197,8 +181,7 @@ picgo upload
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/07/401f1d04985e61ad664dbc0a48580bab.png)
 
-到此就实现图床最基本的功能了，搭配任意编辑器都可使用图床了，只是稍显麻烦，如果在编辑器中复制上传，成功后即刻显示图片体验会更好。下面我们使用
-Obsidian 搭配对应插件实现上面功能。
+到此就实现图床最基本的功能了，搭配任意编辑器都可使用图床了，只是稍显麻烦，如果在编辑器中复制上传，成功后即刻显示图片体验会更好。下面我们使用 Obsidian 搭配对应插件实现上面功能。
 
 ## 安装配置 Obsidian
 
@@ -216,7 +199,4 @@ Obsidian 搭配对应插件实现上面功能。
 
 ## 结语
 
-至此使用 Oracle
-作为对象存储教程已经完成，但是还是有些缺陷，如图片访问效果不理想，因为甲骨文的对象存储不支持
-cdn，导致不同区域访问效果不同。下一章我们使用 CloudFlare
-加速我们的图片访问，以及特殊情况下制作 GIF 上传的方法。
+至此使用 Oracle 作为对象存储教程已经完成，但是还是有些缺陷，如图片访问效果不理想，因为甲骨文的对象存储不支持 cdn，导致不同区域访问效果不同。下一章我们使用 CloudFlare 加速我们的图片访问，以及特殊情况下制作 GIF 上传的方法。

@@ -23,8 +23,7 @@ categories:
 
 ![HIzt8jAevWsrxSq.png](https://img.linkzz.eu.org/main/images/2023/08/bd04dd192addebb38e622a09f28201cd.png)
 
-不！ 这并不是我想要的，每天要面对的黑框框。除非审美有问题，
-要不然谁不喜欢下面这个：
+不！ 这并不是我想要的，每天要面对的黑框框。除非审美有问题，要不然谁不喜欢下面这个：
 
 ![7C5BgHtISyKbjiz.png](https://img.linkzz.eu.org/main/images/2023/08/c46cc9e6222af7625a6a276b9411d747.png)
 
@@ -34,13 +33,7 @@ categories:
 
 ## Windows Terminal
 
-我们都知道，全球最大装机量的操作系统是
-Windows，然而这样一个系统却有一个又丑有难用的终端-命令提示符，这使得很多开发者退而选择
-linux 发行版进行开发，当然他们选择 linux
-肯定还有其他原因，微软估计自己人都在吐槽自己的开发工具有多难用，所以陆续开发了
-linux 子系统、Windows Terminal 等开发者友好的工具，这才使得我在 Windows
-环境也能有不错的开发体验。在一众使用 cmd、powershell、git-bash
-原生终端的小伙伴中成为焦点。
+我们都知道，全球最大装机量的操作系统是 Windows，然而这样一个系统却有一个又丑有难用的终端-命令提示符，这使得很多开发者退而选择 linux 发行版进行开发，当然他们选择 linux 肯定还有其他原因，微软估计自己人都在吐槽自己的开发工具有多难用，所以陆续开发了 linux 子系统、Windows Terminal 等开发者友好的工具，这才使得我在 Windows 环境也能有不错的开发体验。在一众使用 cmd、powershell、git-bash 原生终端的小伙伴中成为焦点。
 
 说了那么多废话，下面我们还是从实践中来探索一下 Windows Terminal 吧。
 
@@ -52,12 +45,9 @@ linux 子系统、Windows Terminal 等开发者友好的工具，这才使得我
 
 ### 配置主题
 
-最新版的 Windows Terminal 具有 GUI 配置界面，你可以在设置选项卡进行 GUI
-的配置，如果不喜欢 GUI 界面配置，你还可以使用 JSON 配置的方式，点击打开 JSON
-文件即可。
+最新版的 Windows Terminal 具有 GUI 配置界面，你可以在设置选项卡进行 GUI 的配置，如果不喜欢 GUI 界面配置，你还可以使用 JSON 配置的方式，点击打开 JSON 文件即可。
 
-打开[windowsterminalthemes](https://windowsterminalthemes.dev/)，选择一个你喜欢的主题，
-然后复制到 JSON 文件 schemes 数组中， 如：
+打开[windowsterminalthemes](https://windowsterminalthemes.dev/)，选择一个你喜欢的主题，然后复制到 JSON 文件 schemes 数组中， 如：
 
 ```JSON
 {
@@ -183,9 +173,7 @@ linux 子系统、Windows Terminal 等开发者友好的工具，这才使得我
 
 ### 安装 Oh-My-Posh
 
-常用 linux 的人应该对 Oh-My-Zsh 不陌生，Oh-My-Zsh 加上众多的
-plugin，使终端使用的舒适度提升了很多，[Oh-My-Posh](https://ohmyposh.dev/)即是对
-powershell 做 prompt 美化的一个引擎。
+常用 linux 的人应该对 Oh-My-Zsh 不陌生，Oh-My-Zsh 加上众多的 plugin，使终端使用的舒适度提升了很多，[Oh-My-Posh](https://ohmyposh.dev/)即是对 powershell 做 prompt 美化的一个引擎。
 
 管理员身份打开 powershell, 执行：
 
@@ -193,22 +181,19 @@ powershell 做 prompt 美化的一个引擎。
 Install-Module oh-my-posh -Scope CurrentUser
 ```
 
-若提示不允许安装是因为 Windows
-的脚本执行策略阻止的，需要修改策略，同样管理员运行：
+若提示不允许安装是因为 Windows 的脚本执行策略阻止的，需要修改策略，同样管理员运行：
 
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Confirm
 ```
 
-安装好之后执`Import-Module oh-my-posh`导入模块，因为导入只在会话范围内有效，为了保证每次开启终端之前都导入模块，在
-powershell 启动脚本中加入代码。使用编辑器打开$profile，我用的编辑器是 vscode。
+安装好之后执`Import-Module oh-my-posh`导入模块，因为导入只在会话范围内有效，为了保证每次开启终端之前都导入模块，在 powershell 启动脚本中加入代码。使用编辑器打开$profile，我用的编辑器是 vscode。
 
 ```powershell
 code $profile  # 用vscode打开powershell配置文件，没有这个文件会自己创建
 ```
 
-`$profile`类似`.bashrc`，每次开启一个会话都会执行该脚本，适合将各种 alias
-放到其中，文件中添加
+`$profile`类似`.bashrc`，每次开启一个会话都会执行该脚本，适合将各种 alias 放到其中，文件中添加
 
 ```powershell
 Import-Module oh-my-posh
@@ -216,12 +201,9 @@ Import-Module oh-my-posh
 
 ### 选择一个合适的 prompt 主题
 
-Oh-My-Posh
-内置了多个主题，其颜值和实用性我觉得够用了，使用`Get-PoshThemes`可预览所有主题。
-![4AK6Jey9VHMiYq1.png](https://img.linkzz.eu.org/main/images/2023/08/55f6ddd3f7ed717ef9af8cbaf3fd232c.png)
+Oh-My-Posh内置了多个主题，其颜值和实用性我觉得够用了，使用`Get-PoshThemes`可预览所有主题。 ![4AK6Jey9VHMiYq1.png](https://img.linkzz.eu.org/main/images/2023/08/55f6ddd3f7ed717ef9af8cbaf3fd232c.png)
 
-使用`Set-PoshPrompt -Theme $THEME`设置主题，选好主题之后也将设置主题的脚本写到
-profile 中：
+使用`Set-PoshPrompt -Theme $THEME`设置主题，选好主题之后也将设置主题的脚本写到 profile 中：
 
 ```powershell
 Import-Module oh-my-posh
@@ -234,18 +216,13 @@ Set-PoshPrompt -Theme ys  # 我使用ys主题
 
 ![hwkPcZmKvf7Ny9H.png](https://img.linkzz.eu.org/main/images/2023/08/59b2c1bd6146c4e5a8a962d7d0c43661.png)
 
-这是因为字体不支持图标引起的，需要 Nerd
-字体方可解决这个问题。具体可参考这个项目:
-[Nerd Font](https://github.com/ryanoasis/nerd-fonts)
-我是用的是[JetbrainsMono Nerd Patcher](https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf)的字体。安装字体之后可在设置界面选择该字体：
+这是因为字体不支持图标引起的，需要 Nerd字体方可解决这个问题。具体可参考这个项目: [Nerd Font](https://github.com/ryanoasis/nerd-fonts) 我是用的是[JetbrainsMono Nerd Patcher](https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono%20Windows%20Compatible.ttf)的字体。安装字体之后可在设置界面选择该字体：
 
 ![Oy3frwQ5lmtHGVI.png](https://img.linkzz.eu.org/main/images/2023/08/6aecea3b8fb073c02f6c35ed43e5b786.png)
 
 ### 其他一些设置
 
-至于添加背景图，设置透明度等这些设置相信就不用我多说什么了，相信你也能配出一个高颜值的终端，
-最后贴出我的 JSON 设置和 profile 供大家参考。
-最后说一下一些主题的颜色配置在命令的参数如：`git --version`中`--version`可能会很难辨认，主要因为该颜色和背景色的对比度太低。
+至于添加背景图，设置透明度等这些设置相信就不用我多说什么了，相信你也能配出一个高颜值的终端，最后贴出我的 JSON 设置和 profile 供大家参考。最后说一下一些主题的颜色配置在命令的参数如：`git --version`中`--version`可能会很难辨认，主要因为该颜色和背景色的对比度太低。
 
 ![oKnaA7dMel2kJuO.png](https://img.linkzz.eu.org/main/images/2023/08/387941d38aa7adad63924f1e1470e92f.png)
 
@@ -380,6 +357,4 @@ Set-PoshPrompt -Theme ys
 
 ## 结语
 
-至此 Windows Terminal 美化就说完了，到这里你可以去给你的小伙伴们装 X
-了，但这只算装 X 刚入门阶段， 要想更好的装
-X，想要更多好用的终端功能，下一章我们继续。
+至此 Windows Terminal 美化就说完了，到这里你可以去给你的小伙伴们装 X 了，但这只算装 X 刚入门阶段， 要想更好的装 X，想要更多好用的终端功能，下一章我们继续。

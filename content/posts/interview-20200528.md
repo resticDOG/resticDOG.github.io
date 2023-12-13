@@ -2,14 +2,16 @@
 title: Spring事务的隔离级别和传播行为以及常见的事务注解失效的原因
 date: 2020-05-29 00:21:52
 tags:
-- Java
-- 面试
-- Spring
-- 事务
+  - Java
+  - 面试
+  - Spring
+  - 事务
 categories:
-- Java
+  - Java
 ---
+
 > 在日常开发中事务的重要性不言而喻,而Spring作为日常使用的最多的Java框架对事务的处理有一套自己的准则,现在我们就来看以下Spring中事务的隔离级别和传播行为.
+
 <!-- more -->
 
 ## Spring的事务隔离级别和传播行为
@@ -38,38 +40,31 @@ categories:
 
 **四种隔离级别**, 是基于数据库隔离级别的封装(✔️表示允许,❌表示不允许):
 
-|隔离级别|脏读|不可重复读|幻读|
-|--|:--:|:--:|:--:|
-|**默认(Default使用数据库默认的隔离级别)**|-|-|-|
-|**未提交读(Read_UnCommited)**|✔️|✔️|✔️|
-|**已提交读(Read_Commited)**|❌|✔️|✔️|
-|**可重复读(Repeatable_Read)**|❌|❌|✔️|
-|**串行化的(Serializable)**|❌|❌|❌|
+| 隔离级别                                  | 脏读 | 不可重复读 | 幻读 |
+| ----------------------------------------- | :--: | :--------: | :--: |
+| **默认(Default使用数据库默认的隔离级别)** |  -   |     -      |  -   |
+| **未提交读(Read_UnCommited)**             |  ✔️  |     ✔️     |  ✔️  |
+| **已提交读(Read_Commited)**               |  ❌  |     ✔️     |  ✔️  |
+| **可重复读(Repeatable_Read)**             |  ❌  |     ❌     |  ✔️  |
+| **串行化的(Serializable)**                |  ❌  |     ❌     |  ❌  |
 
 ### 传播行为
 
 **七种传播行为**:
 
-- **Propagation.REQUIRED**
-支持当前事务,如果当前存在事务则加入当前事务;如果当前没有事务,则新建一个事务进行.
+- **Propagation.REQUIRED** 支持当前事务,如果当前存在事务则加入当前事务;如果当前没有事务,则新建一个事务进行.
 
-- **Propagation.SUPPORTS**
-支持当前事务,如果当前存在事务则加入当前事务,如果当前没有事务,则以非事务方式运行.
+- **Propagation.SUPPORTS** 支持当前事务,如果当前存在事务则加入当前事务,如果当前没有事务,则以非事务方式运行.
 
-- **Propagation.MANDATORY**
-支持当前事务,如果当前存在事务则加入当前事务,如果当前没有事务则抛出异常.
+- **Propagation.MANDATORY** 支持当前事务,如果当前存在事务则加入当前事务,如果当前没有事务则抛出异常.
 
-- **Propagation.REQUIRES_NEW**
-不支持当前事务,如果当前存在事务,则当前事务挂起, 另起一个新的事务运行,这两个事务是相互独立的,不会相互影响.
+- **Propagation.REQUIRES_NEW** 不支持当前事务,如果当前存在事务,则当前事务挂起, 另起一个新的事务运行,这两个事务是相互独立的,不会相互影响.
 
-- **Propagation.NOT_SUPPORT**
-不支持当前事务,如果当前存在事务,则当前事务挂起, 自身以非事务方式运行.
+- **Propagation.NOT_SUPPORT** 不支持当前事务,如果当前存在事务,则当前事务挂起, 自身以非事务方式运行.
 
-- **Propagation.NEVER**
-不支持当前事务,如果当前存在事务,则抛出异常,如果当前不存在事务,则以非事务方式运行.
+- **Propagation.NEVER** 不支持当前事务,如果当前存在事务,则抛出异常,如果当前不存在事务,则以非事务方式运行.
 
-- **Propagation.NESTED**
-嵌套事务, 和requires_new的区别是当前事务的提交依赖于父事务的提交, 若父事务回滚, 则当前事务也会回滚.另外当前方法调用子方法时,子方法的发生异常被捕获了,则只有子方法回滚事务,当前事务仍然可以运行.基于数据库的**SAVEPOINT**技术,若数据库不支持此技术,则会新建一个事务去运行,此时就相当于REQUIRES_NEW.
+- **Propagation.NESTED** 嵌套事务, 和requires_new的区别是当前事务的提交依赖于父事务的提交, 若父事务回滚, 则当前事务也会回滚.另外当前方法调用子方法时,子方法的发生异常被捕获了,则只有子方法回滚事务,当前事务仍然可以运行.基于数据库的**SAVEPOINT**技术,若数据库不支持此技术,则会新建一个事务去运行,此时就相当于REQUIRES_NEW.
 
 ## Spring的@Transactional注解不生效的原因
 
@@ -159,5 +154,5 @@ public class AServiceImpl implements AService {
 ```
 
 第一种抛出`RuntimeException`是可以触发事务的回滚的, 因为Spring默认回滚的事务就是`RuntimeException`, 第二种`Exception`就不会生效了,想让其生效必须指定`@Transactional(rollbackFor=Exception.class)`
-> 注意: rollbackFor仅限**Throwable异常**及其**子类**
 
+> 注意: rollbackFor仅限**Throwable异常**及其**子类**

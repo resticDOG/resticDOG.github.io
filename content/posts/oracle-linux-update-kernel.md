@@ -14,10 +14,7 @@ toc:
   auto: true
 ---
 
-甲骨文的免费Arm主机开始申请的时候没注意选了 `Oracle Linux 8` 系统而没选自己更熟
-悉的`Ubuntu` ，导致各种折腾的时候发现资料有点少，今天折腾一个云安卓 redroid 系统
-的时候发现需要编译一些内核模块，而默认的 `5.4` 内核一直编译失败，于是想到升级内
-核试试，一路搜索找不到很符合的文章，于是自己摸索了一下，记录于此。
+甲骨文的免费Arm主机开始申请的时候没注意选了 `Oracle Linux 8` 系统而没选自己更熟悉的`Ubuntu` ，导致各种折腾的时候发现资料有点少，今天折腾一个云安卓 redroid 系统的时候发现需要编译一些内核模块，而默认的 `5.4` 内核一直编译失败，于是想到升级内核试试，一路搜索找不到很符合的文章，于是自己摸索了一下，记录于此。
 
 ## 1. 查看已经安装的内核包
 
@@ -34,9 +31,7 @@ kernel-uek-devel.aarch64                  5.4.17-2136.309.4.el8uek              
 kernel-uek-devel.aarch64                  5.4.17-2136.320.7.1.el8uek                    @ol8_baseos_latest
 ```
 
-可以看到我们的内核都是baseos仓库安装的内核，该仓库内核版本比较老，查看
-[官网仓库](https://yum.oracle.com/oracle-linux-8.html) 列表，内核仓库有了更新的
-包。
+可以看到我们的内核都是baseos仓库安装的内核，该仓库内核版本比较老，查看 [官网仓库](https://yum.oracle.com/oracle-linux-8.html) 列表，内核仓库有了更新的包。
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/11/65b914750a8e4af2223222846ec0bc9e.png)
 
@@ -101,8 +96,7 @@ yum.oracle.com_repo_OracleLinux_OL8_UEKR7_aarch64 created by dnf config-manager 
 sudo yum update
 ```
 
-可已查看到将要更新的包了，同时 yum 会自动移除旧的内核，这里是同时升级仓库中所有
-已安装的包版本，如果只想升级内核可以使用 `sudo yum update kernel\*`
+可已查看到将要更新的包了，同时 yum 会自动移除旧的内核，这里是同时升级仓库中所有已安装的包版本，如果只想升级内核可以使用 `sudo yum update kernel\*`
 
 最后重启一下
 

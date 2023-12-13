@@ -18,13 +18,7 @@ toc:
 
 ## 前言
 
-自己现在家中有一台自己组的 All in One 服务器，系统是 PVE，在上面跑了个虚拟机
-OpenWRT
-承担家里旁路网关的功能，起初用的国内不知道谁编译的版本，后面自己编译了官方 22.05
-版本，添加上自己想要的功能一直稳定运行了 2 年，但是 All in One
-最大的问题就是宿主机重启，因为最近折腾显卡直通需要不断重启
-PVE，这时要是家里领导在打王者掉线了就有的好受了，所以趁着 618（没错 618
-到现在才开始折腾）下手了一台 R2S，彻底杜绝家里领导找茬的机会。
+自己现在家中有一台自己组的 All in One 服务器，系统是 PVE，在上面跑了个虚拟机 OpenWRT 承担家里旁路网关的功能，起初用的国内不知道谁编译的版本，后面自己编译了官方 22.05 版本，添加上自己想要的功能一直稳定运行了 2 年，但是 All in One 最大的问题就是宿主机重启，因为最近折腾显卡直通需要不断重启 PVE，这时要是家里领导在打王者掉线了就有的好受了，所以趁着 618（没错 618 到现在才开始折腾）下手了一台 R2S，彻底杜绝家里领导找茬的机会。
 
 ## 需求
 
@@ -36,8 +30,7 @@ PVE，这时要是家里领导在打王者掉线了就有的好受了，所以�
 
 2. 自定义域名
 
-通过自定义域名和 Nginx 实现域名访问自部署的服务，不用记 ip 和端口，不用维护
-dashboard 服务
+通过自定义域名和 Nginx 实现域名访问自部署的服务，不用记 ip 和端口，不用维护 dashboard 服务
 
 3. DDNS 服务
 
@@ -53,11 +46,7 @@ windows 激活
 
 ## R2S 系统安装
 
-下面我们就一步步实现上面的需求，首先是系统的选用，依照官网介绍选择官方自己维护编译的
-OpenWRT 发行版，对与 Docker
-目前是没有需求的，但为了防止以后有需要的时候还得自己安装，所以我们直接一步到位，选择官方基于
-OpenWrt 22.03 构建的带 Docker
-的[FriendlyWrt 固件](https://download.friendlyelec.com/NanoPiR2S)
+下面我们就一步步实现上面的需求，首先是系统的选用，依照官网介绍选择官方自己维护编译的 OpenWRT 发行版，对与 Docker 目前是没有需求的，但为了防止以后有需要的时候还得自己安装，所以我们直接一步到位，选择官方基于 OpenWrt 22.03 构建的带 Docker 的[FriendlyWrt 固件](https://download.friendlyelec.com/NanoPiR2S)
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/08/968e910e8c6bb4e162bf5dcc779f0519.png)
 
@@ -65,9 +54,7 @@ OpenWrt 22.03 构建的带 Docker
 
 ## 系统配置
 
-插上网线，更改电脑 ip 为`192.168.2.100`，系统默认 ip
-为`192.168.2.1`，配置的客户机 ip 也要在`192.168.2.0/24`网段才能互访，现在使用
-ssh 访问 openwrt 后台:
+插上网线，更改电脑 ip 为`192.168.2.100`，系统默认 ip 为`192.168.2.1`，配置的客户机 ip 也要在`192.168.2.0/24`网段才能互访，现在使用 ssh 访问 openwrt 后台:
 
 ```bash
 ssh root@192.168.2.1
@@ -99,9 +86,7 @@ config interface 'lan'
         option gateway '192.168.5.1'
 ```
 
-上面掩码和网关需要依据家里的网络环境修改，我的虚拟机 openwrt
-目前具有良好的网络访问能力，所以网关设置为了虚拟机 openwrt 的
-ip，还有要注意的就是 ip 不能冲突了。
+上面掩码和网关需要依据家里的网络环境修改，我的虚拟机 openwrt 目前具有良好的网络访问能力，所以网关设置为了虚拟机 openwrt 的 ip，还有要注意的就是 ip 不能冲突了。
 
 ### 修改 DNS
 
@@ -109,8 +94,7 @@ ip，还有要注意的就是 ip 不能冲突了。
 vi /etc/config/dhcp
 ```
 
-dnsmasq 配置选项下新增`list server '192.168.5.1'` dncp 'lan'配置选项下 option
-ignore 要改为 1，对应 web 界面的忽略此接口
+dnsmasq 配置选项下新增`list server '192.168.5.1'` dncp 'lan'配置选项下 option ignore 要改为 1，对应 web 界面的忽略此接口
 
 ```text
 config dnsmasq
@@ -259,8 +243,7 @@ root@FriendlyWrt:~# curl https://baidu.com
 
 ### 修改源（可选）
 
-FriendlyWrt 固件使用的是腾讯源, 由于虚拟机 openwrt
-使用的是清华源，所以保持一致以免软件包版本冲突:
+FriendlyWrt 固件使用的是腾讯源, 由于虚拟机 openwrt 使用的是清华源，所以保持一致以免软件包版本冲突:
 
 ```bash
 sed -i -e 's/mirrors.cloud.tencent.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/opkg/distfeeds.conf
@@ -353,21 +336,13 @@ Web 端
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/08/7f8eb8dd9d5963624cebd1e040a243f6.png)
 
-坐标上海，电信光猫拨号，有公网 ip，可以看到虚拟机 openwrt 位于 2
-级路由之下，这是要将 openwrt
-的端口转发出去需要二级路由`AC-68U`转发一次，再经过光猫转发一次，较为麻烦，所以在安全的前提下我在电信
-app 上面将二级路由 DMZ 出去，开启二级路由防火墙，再使用二级路由的端口转发功能将
-wireguard
-端口转发出去即可，这样公网接管了二级路由的所有端口，以后也方便配置各种端口
-转发。
+坐标上海，电信光猫拨号，有公网 ip，可以看到虚拟机 openwrt 位于 2 级路由之下，这是要将 openwrt 的端口转发出去需要二级路由`AC-68U`转发一次，再经过光猫转发一次，较为麻烦，所以在安全的前提下我在电信 app 上面将二级路由 DMZ 出去，开启二级路由防火墙，再使用二级路由的端口转发功能将 wireguard 端口转发出去即可，这样公网接管了二级路由的所有端口，以后也方便配置各种端口转发。
 
-> 注意千万别将 openwrt 的 web 端口 80 和 ssh 端口 22
-> 转发到公网，这样黑客扫到开盒是早晚的事。
+> 注意千万别将 openwrt 的 web 端口 80 和 ssh 端口 22 转发到公网，这样黑客扫到开盒是早晚的事。
 
 ### windows 客户端配置
 
-windows
-使用官方的[wireguard 客户端](https://download.wireguard.com/windows-client/)，新建空隧道：
+windows使用官方的[wireguard 客户端](https://download.wireguard.com/windows-client/)，新建空隧道：
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/08/5d9972bc64588156eaa6bf1e0297b551.png)
 
@@ -390,15 +365,11 @@ PersistentKeepalive = 25
 - Interface 配置
   - PrivateKey: 自动生成的私钥，不需要修改
   - Address: 当前节点的 ip 地址，需要和后面配置的对端地址相同
-  - DNS: 使用 openwrt 提供的 dns
-    服务，用到自定义域名的时候有用，在公司也能访问内网的域名
-  - MTU: 默认
-    1500，影响发包的性能，这个需要自己去试，小一点可以提升一点网络性能，不是太在意的话默认
-    1500 即可。
+  - DNS: 使用 openwrt 提供的 dns 服务，用到自定义域名的时候有用，在公司也能访问内网的域名
+  - MTU: 默认 1500，影响发包的性能，这个需要自己去试，小一点可以提升一点网络性能，不是太在意的话默认 1500 即可。
 - Peer 配置
   - PublicKey: 填写 openwrt 的公钥
-  - AllowedIPs: 允许访问的网段，这里填写家里内网网段即可，如果需要 wireguard
-    作为所有网段隧道填写 0.0.0.0/0，需要 openwrt 防火墙配置正确才能访问互联网。
+  - AllowedIPs: 允许访问的网段，这里填写家里内网网段即可，如果需要 wireguard 作为所有网段隧道填写 0.0.0.0/0，需要 openwrt 防火墙配置正确才能访问互联网。
   - Endpoint: 公网转发出来的 wireguard 地址和端口
   - PersistentKeepalive: 保活时间，设置为 25s
 
@@ -435,19 +406,14 @@ windows 客户端点击连接：
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/08/14abc786923d364d48435f179e5733fd.png)
 
-对端连接成功，但是访问内网`192.168.5.0/24`网段显然是不行的，这是因为防火墙将来自
-wireguard 的网络访问转发给 lan 接口，下面我们就开始配置防火墙。
+对端连接成功，但是访问内网`192.168.5.0/24`网段显然是不行的，这是因为防火墙将来自 wireguard 的网络访问转发给 lan 接口，下面我们就开始配置防火墙。
 
 ### 防火墙配置
 
-通过 openwrt Web 端，“网络” -> “防火墙” -> “NAT 规则”，配置一个地址的
-nat，转发来自`192.168.7.0/24`网段的流量到 lan
-接口，这样即可实现内网网段的访问，当然如果需要 wireguard
-具备访问所有网段的能力，将目标地址设为任意即可。
+通过 openwrt Web 端，“网络” -> “防火墙” -> “NAT 规则”，配置一个地址的nat，转发来自`192.168.7.0/24`网段的流量到 lan 接口，这样即可实现内网网段的访问，当然如果需要 wireguard 具备访问所有网段的能力，将目标地址设为任意即可。
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/08/3ed316779a109677b36d2c22ab8e629b.png)
 
 ## 小结
 
-本章我们实现了 openwrt 的第一个功能，外网访问内网即 VPN
-的功能，让我们可以不用担心各种端口转发暴露内网风险，实现方便安全的访问家庭内网的能力，接下来我们继续实现第二个需求，自定义内网域名。
+本章我们实现了 openwrt 的第一个功能，外网访问内网即 VPN 的功能，让我们可以不用担心各种端口转发暴露内网风险，实现方便安全的访问家庭内网的能力，接下来我们继续实现第二个需求，自定义内网域名。

@@ -22,8 +22,4 @@ validate : function(value, type){
 }
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经过测试在 js
-中`!null`、`!undefined`、`!''`输出结果都为`true`，而任意非空字符串取非均
-为`false`。代码中巧妙的利用了这点，先用 jquery 把传入的参数去掉空格，同时转换成
-字符串，再进行二次取非操作，这样传入的空字符就会返回 boolean 型的`true`,这样函数
-的返回值也更容易理解，当传入的是空串时返回`true`。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经过测试在 js中`!null`、`!undefined`、`!''`输出结果都为`true`，而任意非空字符串取非均为`false`。代码中巧妙的利用了这点，先用 jquery 把传入的参数去掉空格，同时转换成字符串，再进行二次取非操作，这样传入的空字符就会返回 boolean 型的`true`,这样函数的返回值也更容易理解，当传入的是空串时返回`true`。

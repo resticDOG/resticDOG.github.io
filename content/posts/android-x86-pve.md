@@ -20,17 +20,13 @@ toc:
 
 ![android-x86-demo.gif](https://img.linkzz.eu.org/main/images/2023/11/c8a6924e9c9fa1972a6f19da3367218c.gif)
 
-可以看到运行很流畅，由于gif压缩小了尺寸，Aida64的信息界面看不清，显卡
-是`virtGL`，支持`OpenGL`，3D加速由宿主机`Intel UHD 630`提供，最后的游戏演示可看
-出很流程。
+可以看到运行很流畅，由于gif压缩小了尺寸，Aida64的信息界面看不清，显卡是`virtGL`，支持`OpenGL`，3D加速由宿主机`Intel UHD 630`提供，最后的游戏演示可看出很流程。
 
 ## 1. 前言
 
 ### 1.1 为什么需要Android
 
-我日常使用的是一个直通了RTX2060s（矿卡）的Win11虚拟机，众所周知，在虚拟机里使用
-模拟器性能巨差，我试过夜神模拟器，启动慢不说，游戏电竞帧数，连抖音都卡顿明显。所
-以一个能在Hypevision中运行的安卓系统就是一个很好的选择。
+我日常使用的是一个直通了RTX2060s（矿卡）的Win11虚拟机，众所周知，在虚拟机里使用模拟器性能巨差，我试过夜神模拟器，启动慢不说，游戏电竞帧数，连抖音都卡顿明显。所以一个能在Hypevision中运行的安卓系统就是一个很好的选择。
 
 ### 1.2 选择哪一种
 
@@ -38,34 +34,21 @@ toc:
 
 - 1. **ChromeOS**:
 
-     首当其冲的就是基于[Chromium OS](https://www.chromium.org/chromium-os/)的
-     ChromeOS及其他发行版如国内的[FydeOS](https://fydeos.io/)，这系统号称老电影
-     福音，具有完整的桌面环境并兼容Android应用，可惜对于显卡的兼容性不是很好，而
-     虚拟机能使用3D加速的显卡，除了显卡直通外还有一种就是最近一两年积极维护
-     的[VirtualGL](https://wiki.archlinux.org/title/VirtualGL)，所以ChromeOS在
-     VirtualGL下运行是否可行还得画个问号，后面再折腾。
+     首当其冲的就是基于[Chromium OS](https://www.chromium.org/chromium-os/)的ChromeOS及其他发行版如国内的[FydeOS](https://fydeos.io/)，这系统号称老电影福音，具有完整的桌面环境并兼容Android应用，可惜对于显卡的兼容性不是很好，而虚拟机能使用3D加速的显卡，除了显卡直通外还有一种就是最近一两年积极维护的[VirtualGL](https://wiki.archlinux.org/title/VirtualGL)，所以ChromeOS在VirtualGL下运行是否可行还得画个问号，后面再折腾。
 
 - 2. **容器化方案 -`Waydroid` or `Redroid`**:
 
-     第二种方案就是借助容器化`cgroups`，`namespace` 等内核技术的容器化方案，这种
-     方案启动快速，可使用宿主机硬件资源，也能使用宿主机GPU进行3D加速, 但是对于
-     Nvidia的显卡兼容性很差。运用pve创建一个lxc容器来运行docker redroid容器也能
-     运行，后续折腾一下这个方案。
+     第二种方案就是借助容器化`cgroups`，`namespace` 等内核技术的容器化方案，这种方案启动快速，可使用宿主机硬件资源，也能使用宿主机GPU进行3D加速, 但是对于Nvidia的显卡兼容性很差。运用pve创建一个lxc容器来运行docker redroid容器也能运行，后续折腾一下这个方案。
 
 - 3. **Android-x86:**
 
-     [Android-x86](https://www.android-x86.org/) 在AOSP的基础上增加x86平台的支
-     持，可通过native-bridge转义arm指令从而运行arm应用，同样称为老电脑福音，GPU
-     兼容性较好，兼容[VirtualGL](https://wiki.archlinux.org/title/VirtualGL) ，
-     今天我们就来在pve中尝试一下这个系统有什么妙处。
+     [Android-x86](https://www.android-x86.org/) 在AOSP的基础上增加x86平台的支持，可通过native-bridge转义arm指令从而运行arm应用，同样称为老电脑福音，GPU兼容性较好，兼容[VirtualGL](https://wiki.archlinux.org/title/VirtualGL) ，今天我们就来在pve中尝试一下这个系统有什么妙处。
 
 ## 2. 安装Android-x86
 
 ### 2.1 镜像下载
 
-打开[Android-x86](https://www.android-x86.org/) 官网，官网提供了2个下载分流，按
-需选择，我这里选
-择[SourceForge](https://sourceforge.net/projects/android-x86/files/)
+打开[Android-x86](https://www.android-x86.org/) 官网，官网提供了2个下载分流，按需选择，我这里选择[SourceForge](https://sourceforge.net/projects/android-x86/files/)
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/11/5d0d0aa1d930d4aba35b64d7cb377d8e.png)
 
@@ -73,8 +56,7 @@ toc:
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/11/7eb5ee18842f0715ae49fe07e057502f.png)
 
-最新版本Release 9.0 基于Android 9.0 Pie，也是下载次数最多的版本，我们选择此版
-本。
+最新版本Release 9.0 基于Android 9.0 Pie，也是下载次数最多的版本，我们选择此版本。
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/11/68eaaa00161a22fc93115275dfa22175.png)
 
@@ -92,8 +74,7 @@ toc:
 
 选择 `q35` 机型和 `OVMF` 安装，显卡选择`VirGL GPU`
 
-> `VirGL GPU` 需要宿主机有有效的render节点设备，也就是说你的显卡需要正确的驱动了
-> 才能运行，通过`ls /dev/dri` 查看是否有 `render*` 字样。
+> `VirGL GPU` 需要宿主机有有效的render节点设备，也就是说你的显卡需要正确的驱动了才能运行，通过`ls /dev/dri` 查看是否有 `render*` 字样。
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/11/ad8920561f6fc190fe3bddb0495dc2c9.png)
 
@@ -101,8 +82,7 @@ toc:
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/11/25c2e923bae364d53066cc0a2f5421c9.png)
 
-安卓比较依赖`CPU`资源，如果运行的是`arm`应用更需要`CPU`的转译，所以这里给到
-`10 vCPU` 。
+安卓比较依赖`CPU`资源，如果运行的是`arm`应用更需要`CPU`的转译，所以这里给到 `10 vCPU` 。
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/11/50cae9a59aec34c61356736995d4d9fd.png)
 
@@ -192,10 +172,8 @@ Wifi网络先跳过
 选择默认主屏幕模式：
 
 - 任务栏 - 基于浮窗的任务栏模式，类似桌面模式，但是使用体验很差。
-- Quickstep - 传统安卓桌面，鼠标模拟点击操作，还有抽屉式应用，用过安卓的会比较熟
-  悉这个模式，按需选择。
-  > 这里选了始终之后如果要切换默认模式在设置 -> 应用和通知 -> 默认应用里面改回来
-  > 即可
+- Quickstep - 传统安卓桌面，鼠标模拟点击操作，还有抽屉式应用，用过安卓的会比较熟悉这个模式，按需选择。
+  > 这里选了始终之后如果要切换默认模式在设置 -> 应用和通知 -> 默认应用里面改回来即可
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/11/2f1d74da66a65b2a38f184fbc5c298f9.png)
 
@@ -205,9 +183,7 @@ Wifi网络先跳过
 
 ### 3.2 设置静态ip
 
-设置 -> 网络和互联网 -> WLAN 点击 `VirtWifi` 连接，安卓会通过DHCP获取ip，一般获
-得的ip会显示无法访问互联网，这是因为我们的网络无法访问谷歌404网站，接下来我们修
-改这个网络的属性，改为固定ip，我还要修改一下魔法网关。
+设置 -> 网络和互联网 -> WLAN 点击 `VirtWifi` 连接，安卓会通过DHCP获取ip，一般获得的ip会显示无法访问互联网，这是因为我们的网络无法访问谷歌404网站，接下来我们修改这个网络的属性，改为固定ip，我还要修改一下魔法网关。
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/11/df90ae316d598b0178498e57cb6aa1a0.png)
 
@@ -221,17 +197,11 @@ Wifi网络先跳过
 
 按实际情况填好IP和网关、DNS之后保存。
 
-> 保存好之后并不是立即生效的，可关开WLAN重新连接网络之后即可，如果你的网络环境可
-> 直接访问Google的话会弹出账号登录同步通讯录等谷歌服务，登录之后即可通过
-> `Google Play` 下载应用。
+> 保存好之后并不是立即生效的，可关开WLAN重新连接网络之后即可，如果你的网络环境可直接访问Google的话会弹出账号登录同步通讯录等谷歌服务，登录之后即可通过 `Google Play` 下载应用。
 
 ### 3.3 Scrcpy连接Android
 
-[scrcpy](https://github.com/Genymobile/scrcpy) 是安卓远程连接的优秀开源项目，基
-于adb连接，可在PC端通过鼠标操作安卓，具有低时延，高帧率，可定制连接质量，可传输
-音频（需要Android 11以上版本）等一系列优点，具体可查看
-其[文档](https://github.com/Genymobile/scrcpy) scrcpy支持
-`Linux`、`Mac`、`Windows` 三大平台，这里以 `Windows 11` 平台为例
+[scrcpy](https://github.com/Genymobile/scrcpy) 是安卓远程连接的优秀开源项目，基于adb连接，可在PC端通过鼠标操作安卓，具有低时延，高帧率，可定制连接质量，可传输音频（需要Android 11以上版本）等一系列优点，具体可查看其[文档](https://github.com/Genymobile/scrcpy) scrcpy支持 `Linux`、`Mac`、`Windows` 三大平台，这里以 `Windows 11` 平台为例
 
 - 安装 `Scrcpy`
 
@@ -267,17 +237,13 @@ scrcpy -e
 
 -e 参数指定通过tcpip协议连接，如果你只有一个设备连接到adb可不用这个参数。
 
-> Scrcpy 2.0 开始原生支持音频传输，但是需要 Android 11 以
-> 上。[sndcpy](https://github.com/rom1v/sndcpy) 需要Android 10以上，所以音频传输
-> 是无解的，因为Android 10才加入了音频分享的API，具体可查看这
-> 个[Issue](https://github.com/rom1v/sndcpy/issues/25)
+> Scrcpy 2.0 开始原生支持音频传输，但是需要 Android 11 以上。[sndcpy](https://github.com/rom1v/sndcpy) 需要Android 10以上，所以音频传输是无解的，因为Android 10才加入了音频分享的API，具体可查看这个[Issue](https://github.com/rom1v/sndcpy/issues/25)
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/11/33970cc11aea32f0fe9f127cd8758238.png)
 
 ### 3.4 开启arm兼容模式
 
-默认只能运行兼容x86架构的app，运行arm架构的app需要开启arm兼容模式，开启arm转译。
-从[foxi](https://foxi.buduanwang.vip/linux/1996.html/) 大佬的网盘下载库文件。
+默认只能运行兼容x86架构的app，运行arm架构的app需要开启arm兼容模式，开启arm转译。从[foxi](https://foxi.buduanwang.vip/linux/1996.html/) 大佬的网盘下载库文件。
 
 ```bash
 wget https://foxi.buduanwang.vip/pan/foxi/download/andriod/houdini9_y.zip
@@ -337,8 +303,7 @@ adb.exe -e install Downloads\aida64-v196.apk
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/11/a51cf0fb5076236da33861b4999df74c.png)
 
-单核性能接近`Pixel 7 Pro`，多核甚至优于小米13，哈哈，当然这里就是图一乐，不同指
-令集的CPU肯定不能这么比。
+单核性能接近`Pixel 7 Pro`，多核甚至优于小米13，哈哈，当然这里就是图一乐，不同指令集的CPU肯定不能这么比。
 
 ![image.png](https://img.linkzz.eu.org/main/images/2023/11/1a040e9d25bb86bb3db5572c41d33faf.png)
 
@@ -360,8 +325,4 @@ intel_gpu_top
 
 ## 5. 结语
 
-`Android-x86` 在虚拟机上的表现可以说超出了我的预期，大部分的app均可流畅运行，且
-性能开销尚可，只是9.0 版本的Android不支持音频的传输，所以用来当作云手机的效果会
-大打折扣，只能用于一些挂机app或者游戏的运行，另外有一个类似的Android-x86 发行版
-[BlissOS](https://blissos.org/) 有基于Android 12的版本，下期可以尝试这个版本是否
-可解决音频传输的问题，让我拥有一个x86的安卓云手机。
+`Android-x86` 在虚拟机上的表现可以说超出了我的预期，大部分的app均可流畅运行，且性能开销尚可，只是9.0版本的Android不支持音频的传输，所以用来当作云手机的效果会大打折扣，只能用于一些挂机app或者游戏的运行，另外有一个类似的Android-x86发行版 [BlissOS](https://blissos.org/) 有基于Android 12的版本，下期可以尝试这个版本是否可解决音频传输的问题，让我拥有一个x86的安卓云手机。
