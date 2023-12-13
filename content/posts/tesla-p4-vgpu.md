@@ -98,7 +98,7 @@ reboot
 下面我们来看下 Windows 客户机 vGPU 是如何使用的，首先创建虚拟机：
 
 ```bash
-# 创建6c4G的wendows虚拟机
+# 创建6C4G的windows虚拟机
 qm create 116 \
 --cores 6 \
 --cpu host \
