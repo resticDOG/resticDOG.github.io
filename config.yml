@@ -140,7 +140,7 @@ menu:
       url: /bangumi/
       weight: 30
     - identifier: about
-      name: 关于我
+      name: 关于
       url: /about/
       weight: 40
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma

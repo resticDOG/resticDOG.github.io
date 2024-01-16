@@ -1,13 +1,12 @@
 ---
-title: "关于我"
+title: "关于"
 showtoc: false
 ShowReadingTime: false
 ShowWordCount: false
 author: " "
 ---
 
-> 喜欢 ACG，Vim 爱好者, 你可以查 阅[ACG](/bangumi)页 面查看我 看过的动漫和玩过的
-> 游戏， 或者直接 进入我 的[bangumi](https://bgm.tv/user/685827)页面查看。
+> 喜欢 ACG，Vim 爱好者, 你可以查 阅[ACG](/bangumi)页 面查看我看过的动漫和玩过的游戏， 或者直接 进入我的[bangumi](https://bgm.tv/user/685827)页面查看。
 
 ## 近期游戏生活
 
