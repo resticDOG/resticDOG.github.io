@@ -210,7 +210,7 @@ cd tt-rss/plugins.local
 克隆插件
 
 ```bash 
-git clone https://github.com/DigitalDJ/tinytinyrss-fever-plugin.gi fever
+git clone https://github.com/DigitalDJ/tinytinyrss-fever-plugin.git fever
 ```
 
 注意文件夹名字必须是 fever，否则插件加载不出来
